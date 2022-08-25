@@ -4,6 +4,7 @@ module "nsg" {
   name_prefix           = "${var.resource_group_name}-${random_string.cluster_id.result}"
   resource_group_name   = module.resource_group.name
   virtual_network_name  = module.vnet.name
+  region                = module.resource_group.region
   subnets               = [module.subnets.names]
  
   acl_rules = [{
