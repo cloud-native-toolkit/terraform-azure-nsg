@@ -1,11 +1,30 @@
 name: azure-nsg
 type: terraform
-description: Module to provision nsg on azure
+description: Module to provision a Network Security Group on azure
 tags:
-  - tools
-  - devops
+  - security
+  - azure
+  - network
 versions:
   - platforms: []
-    dependencies: []
-    variables: []
+    dependencies:
+      - id: resource_group
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-azure-resource-group
+            version: ">= 1.1.1"
+      - id: vnet
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-azure-vnet
+            version: ">= 1.1.3"
+    variables:
+      - name: region
+        scope: global
+      - name: resource_group_name
+        moduleRef:
+          id: resource_group
+          output: name
+      - name: virtual_network_name
+        moduleRef:
+          id: vnet
+          output: name
 cloudProvider: azure
