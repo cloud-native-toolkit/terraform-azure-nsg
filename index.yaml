@@ -55,6 +55,61 @@ versions:
             }))
         description: List of rules to set on the subnet access control list
         default: '[]'
+    version: v1.0.0
+    outputs:
+      - name: id
+        description: ID of the created network security group
+      - name: name
+        description: Name of the created network security group
+  - platforms: []
+    dependencies:
+      - id: resource_group
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-azure-resource-group
+            version: '>= 1.1.1'
+      - id: vnet
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-azure-vnet
+            version: '>= 1.1.3'
+    variables:
+      - name: name_prefix
+        type: string
+        description: Prefix for the NSG name (\"<prefix>-nsg\")
+      - name: resource_group_name
+        type: string
+        description: Name of the resource group into which to deploy the NSG
+        moduleRef:
+          id: resource_group
+          output: name
+      - name: region
+        type: string
+        description: Azure region containing the virtual network
+        scope: global
+      - name: virtual_network_name
+        type: string
+        description: VNet into which to deploy the NSG
+        moduleRef:
+          id: vnet
+          output: name
+      - name: subnets
+        type: list(string)
+        description: List of subnet names to associate with NSG
+        default: []
+      - name: acl_rules
+        type: |-
+          list(object({
+              name                = string
+              priority            = string 
+              direction           = string   // Inbound or Outbound
+              access              = string   // Allow or Deny
+              protocol            = string   // Tcp, Udp or UCMP
+              source_addr         = string
+              destination_addr    = string
+              source_ports        = string
+              destination_ports   = string
+            }))
+        description: List of rules to set on the subnet access control list
+        default: '[]'
     version: v0.1.0
     outputs:
       - name: id
