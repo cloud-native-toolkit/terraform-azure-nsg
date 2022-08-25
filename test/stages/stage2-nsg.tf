@@ -5,7 +5,7 @@ module "nsg" {
   resource_group_name   = module.resource_group.name
   virtual_network_name  = module.vnet.name
   region                = module.resource_group.region
-  subnets               = [module.subnets.names]
+  subnets               = [module.subnets.names[0], module.subnets.names[1]]
  
   acl_rules = [{
     name                = "ssh-inbound"
