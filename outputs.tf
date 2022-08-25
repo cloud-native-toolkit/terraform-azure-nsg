@@ -7,4 +7,7 @@ output "id" {
 output "name" {
     value = azurerm_network_security_group.nsg.name
     description = "Name of the created network security group"
+    depends_on = [
+      azurerm_network_security_group.nsg
+    ]
 }
