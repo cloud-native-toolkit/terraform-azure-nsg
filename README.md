@@ -56,7 +56,7 @@ This module has the following input variables:
 | virtual_network_name | Mandatory | "" | The VNet into which to deploy the NSG |
 | name_prefix | Optional | "" | The prefix for the NSG name (module will append "-nsg" to this variable)  |
 | name | Optional | "" | The full name for the NSG. One of name or name_prefix must be specified.  |
-| subnets | Optional | [] | List of subnet names in the VNet to which to associate the NSG when created |
+| subnet_ids | Optional | [] | List of subnet ids in the VNet to which to associate the NSG when created |
 | acl_rules | Optional | [] | List of ACL rules to apply (refer to variables.tf for details) |
 
 ## Output Variables
