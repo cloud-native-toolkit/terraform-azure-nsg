@@ -26,9 +26,9 @@ variable "virtual_network_name" {
     description = "VNet into which to deploy the NSG"
 }
 
-variable "subnets" {
+variable "subnet_ids" {
     type = list(string)
-    description = "List of subnet names to associate with NSG"
+    description = "List of subnet ids to associate with NSG"
     default = []
 }
 

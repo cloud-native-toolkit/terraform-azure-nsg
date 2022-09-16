@@ -2,15 +2,6 @@ locals {
   name = var.name == "" ? "${var.name_prefix}-nsg" : var.name
 }
 
-// Get subnet details
-data "azurerm_subnet" "subnets" {
-    count = length(var.subnets)
-
-    name = var.subnets[count.index]
-    resource_group_name = var.resource_group_name
-    virtual_network_name = var.virtual_network_name
-}
-
 // Create network security group
 resource "azurerm_network_security_group" "nsg" {
     name                    = local.name
@@ -35,8 +26,8 @@ resource "azurerm_network_security_group" "nsg" {
 
 // Associate NSG with subnets
 resource "azurerm_subnet_network_security_group_association" "subnet" {
-    count = length(var.subnets)
+    count = length(var.subnet_ids)
 
-    subnet_id                   = data.azurerm_subnet.subnets[count.index].id
+    subnet_id                   = var.subnet_ids[count.index]
     network_security_group_id   = azurerm_network_security_group.nsg.id
 }

@@ -34,10 +34,10 @@ versions:
         moduleRef:
           id: vnet
           output: name
-      - name: subnets
+      - name: subnet_ids
         moduleRef:
           id: subnets
-          output: names
+          output: ids
     outputs:
       - name: id
         description: "ID of the created network security group"
