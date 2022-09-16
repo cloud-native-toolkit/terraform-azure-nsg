@@ -2,6 +2,13 @@
 variable "name_prefix" {
     type = string
     description = "Prefix for the NSG name (\"<prefix>-nsg\")"
+    default = ""
+}
+
+variable "name" {
+    type = string
+    description = "Name for network security group - replaces name_prefix (default = \"\")"
+    default = ""
 }
 
 variable "resource_group_name" {
