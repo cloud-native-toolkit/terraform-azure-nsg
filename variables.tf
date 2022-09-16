@@ -2,6 +2,13 @@
 variable "name_prefix" {
     type = string
     description = "Prefix for the NSG name (\"<prefix>-nsg\")"
+    default = ""
+}
+
+variable "name" {
+    type = string
+    description = "Name for network security group - replaces name_prefix (default = \"\")"
+    default = ""
 }
 
 variable "resource_group_name" {
@@ -21,7 +28,7 @@ variable "virtual_network_name" {
 
 variable "subnets" {
     type = list(string)
-    description = "List of subnet ids to associate with NSG"
+    description = "List of subnet names to associate with NSG"
     default = []
 }
 
