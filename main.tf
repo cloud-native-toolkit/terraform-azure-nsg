@@ -1,13 +1,5 @@
 locals {
-  name = var.name == "" ? var.name_prefix == "" ? "${random_string.prefix[0].result}-nsg" : "${var.name_prefix}-nsg" : var.name
-}
-
-resource "random_string" "prefix" {
-    count = var.name == "" && var.name_prefix == "" ? 1 : 0
-
-    length = 5
-    special = false
-    upper = false
+  name = var.name == "" ? "${var.name_prefix}-nsg" : var.name
 }
 
 // Get subnet details
