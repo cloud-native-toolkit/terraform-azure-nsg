@@ -51,10 +51,11 @@ module "nsg" {
 This module has the following input variables:
 | Variable | Mandatory / Optional | Default Value | Description |
 | -------------------------------- | --------------| ------------------ | ----------------------------------------------------------------------------- |
-| name_prefix | Mandatory | "" | The prefix for the NSG name (module will append "-nsg" to this variable)  |
 | resource_group_name | Mandatory | "" | The resource group into which to deploy the NSG |
 | region | Mandatory | "" | Region into which to deploy the NSG |
 | virtual_network_name | Mandatory | "" | The VNet into which to deploy the NSG |
+| name_prefix | Optional | "" | The prefix for the NSG name (module will append "-nsg" to this variable)  |
+| name | Optional | "" | The full name for the NSG. One of name or name_prefix must be specified.  |
 | subnets | Optional | [] | List of subnet names in the VNet to which to associate the NSG when created |
 | acl_rules | Optional | [] | List of ACL rules to apply (refer to variables.tf for details) |
 
