@@ -37,7 +37,7 @@ versions:
       - name: subnets
         moduleRef:
           id: subnets
-          output: ids
+          output: names
     outputs:
       - name: id
         description: "ID of the created network security group"

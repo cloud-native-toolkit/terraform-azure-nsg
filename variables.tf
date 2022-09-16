@@ -21,7 +21,7 @@ variable "virtual_network_name" {
 
 variable "subnets" {
     type = list(string)
-    description = "List of subnet ids to associate with NSG"
+    description = "List of subnet names to associate with NSG"
     default = []
 }
 
