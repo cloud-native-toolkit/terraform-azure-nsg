@@ -24,6 +24,8 @@ versions:
     variables:
       - name: region
         scope: global
+      - name: name_prefix
+        scope: global
       - name: resource_group_name
         moduleRef:
           id: resource_group
